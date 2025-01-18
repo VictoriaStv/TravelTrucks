@@ -1,0 +1,104 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  border: 1px solid var(--gray-light);
+  border-radius: 20px;
+  padding: 24px;
+  width: 888px;
+  height: 368px;
+}
+.image {
+  border-radius: 10px;
+  width: 292px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.information {
+}
+
+.name {
+  width: 340px;
+}
+.name,
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--main);
+}
+
+.namePrice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 524px;
+}
+
+.heartIcon {
+  fill: rgb(60, 255, 0);
+
+  width: 24px;
+  height: 21px;
+}
+
+.ratingLocation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--main);
+
+  padding-top: 8px;
+}
+.rating {
+  padding-right: 16px;
+}
+.mapIcon,
+.ratingtIcon {
+  width: 16px;
+  height: 16px;
+  padding-right: 4px;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Обмежуємо кількість рядків */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Додаємо багатокрапку в кінці */
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+
+  padding-top: 24px;
+}
+
+.button {
+  border-radius: 200px;
+  width: 166px;
+  height: 56px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
+
+  background: var(--button);
+  border: none;
+}
+.button:hover {
+  background: var(--button-hover);
+}
+.filters{
+    color: black;
+}
