@@ -4,6 +4,8 @@ import Catalog from "./pages/Catalog/Catalog";
 import CamperDetails from "./pages/CamperDetails/CamperDetails";
 import Header from "./components/Header/Header";
 
+import "modern-normalize/modern-normalize.css";
+
 const App = () => {
   return (
     <Router>
