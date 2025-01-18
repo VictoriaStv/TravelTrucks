@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import sprite from "../../assets/sprite.svg"; // Імпортуємо спрайт
 
@@ -6,20 +6,30 @@ const Header = () => {
   return (
     <header className={styles.header}>
       {/* Логотип */}
-      <Link to="/" className={styles.logo}>
+      <NavLink to="/" className={styles.logo}>
         <svg className={styles.logoIcon}>
           <use href={`${sprite}#icon-logo`} />
         </svg>
-      </Link>
+      </NavLink>
 
       {/* Навігація */}
       <nav className={styles.nav}>
-        <Link to="/" className={styles.link}>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? `${styles.link} ${styles.active}` : styles.link
+          }
+        >
           Home
-        </Link>
-        <Link to="/catalog" className={styles.link}>
+        </NavLink>
+        <NavLink
+          to="/catalog"
+          className={({ isActive }) =>
+            isActive ? `${styles.link} ${styles.active}` : styles.link
+          }
+        >
           Catalog
-        </Link>
+        </NavLink>
       </nav>
     </header>
   );
