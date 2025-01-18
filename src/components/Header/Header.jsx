@@ -15,15 +15,9 @@ const Header = () => {
       {/* Навігація */}
       <nav className={styles.nav}>
         <Link to="/" className={styles.link}>
-          <svg className={styles.icon}>
-            <use href={sprite + "#icon-logo"} />
-          </svg>
           Home
         </Link>
         <Link to="/catalog" className={styles.link}>
-          <svg className={styles.icon}>
-            <use href={`${sprite}#catalog-icon`} />
-          </svg>
           Catalog
         </Link>
       </nav>
