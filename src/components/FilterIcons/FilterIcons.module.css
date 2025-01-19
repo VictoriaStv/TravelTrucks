@@ -6,39 +6,48 @@
   margin: 0;
   flex-wrap: wrap; /* Перенос елементів на новий рядок */
   width: 100%; /* Вся ширина контейнера */
+  padding: 24px 0;
 
-  padding:  24px 0;
   
+  overflow: hidden; /* Приховує вміст, що виходить за межі */
 }
 
 .iconItem {
   display: flex;
   align-items: center; /* Вирівнює текст по центру відносно іконки */
   gap: 8px; /* Відстань між іконкою та текстом */
-
   border-radius: 100px;
   padding: 12px 18px;
-
   height: 48px;
   background: var(--badges);
   mix-blend-mode: multiply;
+
+  white-space: nowrap; /* Запобігає переносу тексту */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Додає три крапки, коли текст не вміщується */
+
+  flex-shrink: 0; /* Не дозволяє елементам стиснутись */
+  flex-grow: 0; /* Елементи не ростуть, щоб займати більше місця */
 }
 
 .icon {
   width: 20px;
   height: 20px;
 }
+
 .waterIcon,
 .microwaveItem,
 .gasIcon {
   fill: var(--badges);
 }
+
 .iconLabel {
   font-size: 14px;
-
   font-weight: 500;
-  font-size: 16px;
   line-height: 150%;
   text-align: center;
   color: var(--main);
+  white-space: nowrap; /* Запобігає переносу тексту */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Додає три крапки, якщо текст не вміщується */
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchCampersFromApi } from "../../services/api";
 import Filters from "../../components/Filters/Filters";
 import CamperList from "../../components/CamperList/CamperList"; // Імпортуємо CamperList
+import styles from "./Catalog.module.css"; // Імпортуємо CSS модуль
 
 const Catalog = () => {
   const [campers, setCampers] = useState([]); // Стан для зберігання всіх кемперів
@@ -49,12 +50,16 @@ const Catalog = () => {
   }, [filters, campers]);
 
   return (
-    <div>
+    <div className={styles.container}>
       {/* Компонент фільтрів */}
-      <Filters campers={campers} onFilterChange={handleFilterChange} />
+      <div className={styles.filters}>
+        <Filters campers={campers} onFilterChange={handleFilterChange} />
+      </div>
 
       {/* Компонент для відображення кемперів */}
-      <CamperList campers={filteredCampers} />
+      <div className={styles.camperList}>
+        <CamperList campers={filteredCampers} />
+      </div>
     </div>
   );
 };

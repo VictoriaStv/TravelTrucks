@@ -1,83 +1,79 @@
+// Filters.js
 import { useEffect, useState } from "react";
+import EquipmentFilters from "../EquipmentFilters/EquipmentFilters"; // Імпортуємо новий компонент
+import styles from "./Filters.module.css";
+import sprite from "../../assets/sprite.svg";
 
 const Filters = ({ onFilterChange, campers }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
-  const [selectedEquipment, setSelectedEquipment] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [selectedEquipment, setSelectedEquipment] = useState([]);
 
-  // Функція для отримання унікальних локацій
+  // Отримуємо унікальні локації з масиву campers
   const getUniqueLocations = (campers) => {
     const locations = campers.map((camper) => camper.location);
     return [...new Set(locations)];
   };
 
   useEffect(() => {
-    // Отримуємо унікальні локації при завантаженні даних кемперів
     if (campers && campers.length > 0) {
       setLocations(getUniqueLocations(campers));
     }
   }, [campers]);
 
+  // Обробка змін локації
   const handleLocationChange = (event) => {
-    setSelectedLocation(event.target.value);
-    onFilterChange({ location: event.target.value });
+    const location = event.target.value;
+    setSelectedLocation(location);
+    onFilterChange({ location: location === "all" ? "" : location });
   };
 
+  // Обробка змін у виборі обладнання
   const handleEquipmentChange = (event) => {
     const { value, checked } = event.target;
-    setSelectedEquipment((prev) =>
-      checked ? [...prev, value] : prev.filter((item) => item !== value)
-    );
-    onFilterChange({ equipment: selectedEquipment });
+    const updatedEquipment = checked
+      ? [...selectedEquipment, value]
+      : selectedEquipment.filter((item) => item !== value);
+
+    setSelectedEquipment(updatedEquipment);
+    onFilterChange({ equipment: updatedEquipment });
+  };
+
+  // Розділення локації на місто та країну
+  const splitLocation = (location) => {
+    const [country, city] = location.split(", ");
+    return { city, country };
   };
 
   return (
-    <div>
+    <div className={styles.filtersContainer}>
       {/* Фільтр за локацією */}
-      <select value={selectedLocation} onChange={handleLocationChange}>
-        <option value="">Select Location</option>
-        {locations.map((location, index) => (
-          <option key={index} value={location}>
-            {location}
+      <div className={styles.locationLabel}>
+        <svg className={styles.icon}>
+          <use href={`${sprite}#icon-map`} />
+        </svg>
+        <select
+          value={selectedLocation}
+          onChange={handleLocationChange}
+          disabled={!locations.length}
+        >
+          <option value="" disabled>
+            City
           </option>
-        ))}
-      </select>
-
-      {/* Фільтр за обладнанням */}
-      <div>
-        <label>
-          <input type="checkbox" value="AC" onChange={handleEquipmentChange} />
-          AC
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Automatic"
-            onChange={handleEquipmentChange}
-          />
-          Automatic
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Kitchen"
-            onChange={handleEquipmentChange}
-          />
-          Kitchen
-        </label>
-        <label>
-          <input type="checkbox" value="TV" onChange={handleEquipmentChange} />
-          TV
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="Bathroom"
-            onChange={handleEquipmentChange}
-          />
-          Bathroom
-        </label>
+          {locations.map((location, index) => {
+            const { city, country } = splitLocation(location);
+            return (
+              <option key={index} value={location}>
+                {city}, {country}
+              </option>
+            );
+          })}
+          <option value="all">All Cities</option>
+        </select>
       </div>
+
+      {/* Фільтри для обладнання */}
+      <EquipmentFilters handleEquipmentChange={handleEquipmentChange} />
     </div>
   );
 };

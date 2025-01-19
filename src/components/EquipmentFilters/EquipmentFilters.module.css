@@ -1,0 +1,47 @@
+.filterItem {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gray-light); /* Початковий колір бордеру */
+  border-radius: 12px;
+  padding: 16px 27px;
+  width: 112px;
+  height: 96px;
+  mix-blend-mode: multiply;
+  transition: border-color 0.3s ease; /* Плавний перехід при зміні кольору бордеру */
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+.filterItem.selected {
+  border-color: red; /* Заміни на свій бажаний колір */
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.additionalClass {
+  fill: var(--badges); /* Додатковий стиль для іконок */
+}
+
+/* Приховуємо чекбокс, але залишаємо його функціональність */
+.checkbox {
+  visibility: hidden;
+}
