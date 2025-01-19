@@ -1,3 +1,40 @@
+.filterEquipment {
+  display: flex;
+  width: 360px;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding-top: 48px;
+}
+
+.filterTitle {
+  padding-top: 40px;
+  
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+}
+
+.vehicleTitle {
+    padding-top: 32px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  position: relative; /* Для позиціонування псевдоелемента */
+}
+
+.vehicleTitle::after {
+  content: ""; /* Додаємо порожній елемент */
+  position: absolute;
+  bottom: -24px; /* Відступ 24px від тексту */
+  left: 0;
+  width: 100%; /* Лінія на всю ширину тексту */
+  height: 1px; /* Товщина лінії */
+  background-color: var(--gray-light); /* Колір лінії */
+}
+
 .filterItem {
   display: flex;
 
@@ -27,6 +64,8 @@
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--main);
+
+  padding-bottom: 16px;
 }
 .filterItem.selected {
   border-color: red; /* Заміни на свій бажаний колір */
@@ -38,7 +77,7 @@
 }
 
 .additionalClass {
-  fill: var(--badges); /* Додатковий стиль для іконок */
+  fill: var(--white); /* Додатковий стиль для іконок */
 }
 
 /* Приховуємо чекбокс, але залишаємо його функціональність */

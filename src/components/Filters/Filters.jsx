@@ -8,6 +8,10 @@ const Filters = ({ onFilterChange, campers }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [locations, setLocations] = useState([]);
   const [selectedEquipment, setSelectedEquipment] = useState([]);
+  const [pendingFilters, setPendingFilters] = useState({
+    location: "",
+    equipment: [],
+  });
 
   // Отримуємо унікальні локації з масиву campers
   const getUniqueLocations = (campers) => {
@@ -25,7 +29,10 @@ const Filters = ({ onFilterChange, campers }) => {
   const handleLocationChange = (event) => {
     const location = event.target.value;
     setSelectedLocation(location);
-    onFilterChange({ location: location === "all" ? "" : location });
+    setPendingFilters((prevFilters) => ({
+      ...prevFilters,
+      location: location === "all" ? "" : location,
+    }));
   };
 
   // Обробка змін у виборі обладнання
@@ -36,7 +43,15 @@ const Filters = ({ onFilterChange, campers }) => {
       : selectedEquipment.filter((item) => item !== value);
 
     setSelectedEquipment(updatedEquipment);
-    onFilterChange({ equipment: updatedEquipment });
+    setPendingFilters((prevFilters) => ({
+      ...prevFilters,
+      equipment: updatedEquipment,
+    }));
+  };
+
+  // Обробка натискання кнопки "Пошук"
+  const handleSearch = () => {
+    onFilterChange(pendingFilters);
   };
 
   // Розділення локації на місто та країну
@@ -74,6 +89,15 @@ const Filters = ({ onFilterChange, campers }) => {
 
       {/* Фільтри для обладнання */}
       <EquipmentFilters handleEquipmentChange={handleEquipmentChange} />
+
+      {/* Кнопка Пошук */}
+      <button
+        className={styles.searchButton}
+        onClick={handleSearch}
+        disabled={!locations.length && !selectedEquipment.length}
+      >
+        Search
+      </button>
     </div>
   );
 };
