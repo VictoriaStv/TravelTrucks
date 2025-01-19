@@ -1,18 +1,16 @@
 import styles from "./CamperCard.module.css";
+import FilterIcons from "../FilterIcons/FilterIcons"; // Імпортуємо компонент
 import sprite from "../../assets/sprite.svg";
 
 const CamperCard = ({ camper }) => {
-  // Фільтруємо фільтри, де значення true
   const filters = Object.entries(camper)
-    .filter(([value]) => value === true) // залишаємо лише ті, де значення true
-    .map(([key]) => key); // забираємо лише ключі (фільтри)
+    .filter(([key, value]) => value === true)
+    .map(([key]) => key);
 
-  // Підраховуємо кількість відгуків
   const reviewsCount = Array.isArray(camper.reviews)
     ? camper.reviews.length
     : 0;
 
-  // Форматуємо ціну
   const formattedPrice = camper.price.toLocaleString("uk-UA", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -20,10 +18,9 @@ const CamperCard = ({ camper }) => {
 
   return (
     <div className={styles.card}>
-      {/* Перевіряємо, чи є галерея і рендеримо перше зображення */}
       {camper.gallery && camper.gallery.length > 0 && (
         <img
-          src={camper.gallery[0].thumb} // Беремо перше зображення
+          src={camper.gallery[0].thumb}
           alt="Camper image"
           className={styles.image}
         />
@@ -31,9 +28,7 @@ const CamperCard = ({ camper }) => {
 
       <div className={styles.information}>
         <div className={styles.namePrice}>
-          {/* Назва кемпера */}
           <h3 className={styles.name}>{camper.name}</h3>
-          {/* Ціна з символом євро */}
           <p className={styles.price}>€{formattedPrice}</p>
 
           <svg className={styles.heartIcon}>
@@ -42,7 +37,6 @@ const CamperCard = ({ camper }) => {
         </div>
 
         <div className={styles.ratingLocation}>
-          {/* Рейтинг */}
           <svg className={styles.ratingtIcon}>
             <use href={`${sprite}#icon-rating`} />
           </svg>
@@ -51,28 +45,17 @@ const CamperCard = ({ camper }) => {
             {reviewsCount === 1 ? "Review" : "Reviews"})
           </p>
 
-          {/* Локація */}
           <svg className={styles.mapIcon}>
             <use href={`${sprite}#icon-map`} />
           </svg>
           <p className={styles.location}>{camper.location}</p>
         </div>
 
-        {/* Опис */}
         <p className={styles.description}>{camper.description}</p>
 
-        {/* Показуємо фільтри */}
-        {filters.length > 0 && (
-          <ul className={styles.filters}>
-            {filters.map((filter, index) => (
-              <li key={index} className={styles.filter}>
-                {filter}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* Використовуємо компонент для іконок фільтрів */}
+        {filters.length > 0 && <FilterIcons filters={filters} />}
 
-        {/* Кнопка для показу додаткової інформації */}
         <button className={styles.button}>Show more</button>
       </div>
     </div>
