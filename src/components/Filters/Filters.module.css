@@ -40,7 +40,6 @@ select {
   outline: none; /* Прибирає обводку при фокусі */
 }
 
-
 /* Стиль при ховері на списку */
 select:hover {
   background-color: var(--highlight-background); /* Підсвічування на ховер */
@@ -64,7 +63,21 @@ select option:hover {
   color: #fff; /* Колір тексту при ховері */
 }
 
-.searchButton{
-  
-}
+.searchButton {
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  border: none;
 
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  color: var(--white);
+
+  background: var(--button);
+}
+.searchButton:hover {
+  background: var(--button-hover);
+}
