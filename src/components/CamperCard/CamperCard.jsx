@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./CamperCard.module.css";
-import FilterIcons from "../FilterIcons/FilterIcons"; // Імпортуємо компонент
+import FilterIcons from "../FilterIcons/FilterIcons";
 import sprite from "../../assets/sprite.svg";
 
 const CamperCard = ({ camper }) => {
+  const navigate = useNavigate(); // Ініціалізуємо useNavigate
+
   const filters = Object.entries(camper)
     .filter(([key, value]) => value === true)
     .map(([key]) => key);
@@ -15,6 +18,10 @@ const CamperCard = ({ camper }) => {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  const handleShowMore = () => {
+    navigate(`/catalog/${camper.id}`); // Перехід на сторінку деталей кемпера
+  };
 
   return (
     <div className={styles.card}>
@@ -53,10 +60,11 @@ const CamperCard = ({ camper }) => {
 
         <p className={styles.description}>{camper.description}</p>
 
-        {/* Використовуємо компонент для іконок фільтрів */}
         {filters.length > 0 && <FilterIcons filters={filters} />}
 
-        <button className={styles.button}>Show more</button>
+        <button className={styles.button} onClick={handleShowMore}>
+          Show more
+        </button>
       </div>
     </div>
   );

@@ -64,6 +64,8 @@ select option:hover {
 }
 
 .searchButton {
+margin-top: 40px;
+
   border-radius: 200px;
   padding: 16px 60px;
   width: 166px;

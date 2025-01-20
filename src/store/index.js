@@ -1,12 +1,46 @@
 import { configureStore } from "@reduxjs/toolkit";
-import campersReducer from "./campersSlice"; // імпортуємо редуктор для кемперів
-import favoritesReducer from "./favoritesSlice"; // імпортуємо редуктор для обраних кемперів
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { trailerReducer } from "./trailerSlise";
+import campersReducer from "./campersSlice";
 
-const store = configureStore({
+import { favouritesReducer } from "./sliceFavourites";
+import { modalReducer } from "./modal";
+
+const filtersPersistConfig = {
+  key: "filters",
+  storage,
+};
+
+const favouritesPersistConfig = {
+  key: "favourites",
+  storage,
+};
+
+// Налаштування Redux store з persisted reducers для фільтрів та улюблених
+export const store = configureStore({
   reducer: {
-    campers: campersReducer, // підключаємо редуктор для кемперів
-    favorites: favoritesReducer, // підключаємо редуктор для обраних кемперів
+    trailers: trailerReducer, // редуктор для трейлерів
+    filters: persistReducer(filtersPersistConfig, campersReducer), // редуктор для фільтрів
+    location: campersReducer, // редуктор для місцеположення
+    favourites: persistReducer(favouritesPersistConfig, favouritesReducer), // редуктор для улюблених
+    modal: modalReducer, // редуктор для модалей
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // ігнорування серіалізації для дії, які обробляє redux-persist
+      },
+    }),
 });
 
-export { store }; // експортуємо store
+export const persistor = persistStore(store); // для збереження та відновлення persisted state

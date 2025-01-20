@@ -1,28 +1,26 @@
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCamperDetails } from "../../store/campersSlice";
-import styles from "./CamperDetails.module.css";
+import { useEffect } from "react";
+import { fetchTrailersDetails } from "../../store/operations";
+import css from "./CamperDetails.module.css";
+import DetailedInfo from "../../components/DetailedInfo/DetailedInfo";
+import { Toaster } from "react-hot-toast";
 
 const CamperDetails = () => {
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const { camper, loading, error } = useSelector((state) => state.campers);
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(fetchCamperDetails(id));
-  }, [id, dispatch]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+    dispatch(fetchTrailersDetails(id));
+  }, [dispatch, id]);
 
   return (
-    <div className={styles.camperDetails}>
-      <h1>{camper.name}</h1>
-      <div className={styles.gallery}>{/* Галерея зображень кемпера */}</div>
-      <p>{camper.description}</p>
-      {/* Відгуки і форма бронювання */}
-    </div>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <section className={css.detailedContainer}>
+        <DetailedInfo />
+      </section>
+    </>
   );
 };
 
