@@ -22,7 +22,7 @@
 
 .detailsItem {
   font-weight: 500;
-  color: var(--cl-primary);
+  color: var(--main);
   margin-right: auto;
   display: flex;
   justify-content: space-between;

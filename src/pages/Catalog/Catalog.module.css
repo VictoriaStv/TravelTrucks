@@ -1,9 +1,79 @@
-.container{
-    display: flex;
-    padding: 48px 64px;
-    
+
+@keyframes fadeInContainer {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.filters{
-    padding-right: 64px;
+
+@keyframes fadeInFilters {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+
+@keyframes fadeInCamperCard {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  display: flex;
+  padding: 48px 64px;
+  opacity: 0;
+  animation: fadeInContainer 1s ease-out forwards;
+}
+
+.filters {
+  padding-right: 64px;
+  opacity: 0;
+  animation: fadeInFilters 1s ease-out 0.5s forwards;
+}
+
+.camperList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeInContainer 1s ease-out 1s forwards; 
+}
+
+
+.camperCard {
+  width: 300px;
+  height: 400px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 16px;
+  opacity: 0;
+  animation: fadeInCamperCard 1s ease-out forwards; 
+}
+
+.camperCard:nth-child(1) {
+  animation-delay: 1.5s;
+}
+
+.camperCard:nth-child(2) {
+  animation-delay: 1.7s;
+}
+
+.camperCard:nth-child(3) {
+  animation-delay: 1.9s;
+}
+
+

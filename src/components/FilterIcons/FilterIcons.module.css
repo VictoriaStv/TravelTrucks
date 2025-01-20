@@ -1,33 +1,33 @@
 .filterIcons {
   display: flex;
-  gap: 8px; /* Відстань між іконками */
+  gap: 8px; 
   list-style: none;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap; /* Перенос елементів на новий рядок */
-  width: 100%; /* Вся ширина контейнера */
+  flex-wrap: wrap; 
+  width: 100%; 
   padding: 24px 0;
 
   
-  overflow: hidden; /* Приховує вміст, що виходить за межі */
+  overflow: hidden; 
 }
 
 .iconItem {
   display: flex;
-  align-items: center; /* Вирівнює текст по центру відносно іконки */
-  gap: 8px; /* Відстань між іконкою та текстом */
+  align-items: center; 
+  gap: 8px; 
   border-radius: 100px;
   padding: 12px 18px;
   height: 48px;
   background: var(--badges);
   mix-blend-mode: multiply;
 
-  white-space: nowrap; /* Запобігає переносу тексту */
+  white-space: nowrap; 
   overflow: hidden;
-  text-overflow: ellipsis; /* Додає три крапки, коли текст не вміщується */
+  text-overflow: ellipsis; 
 
-  flex-shrink: 0; /* Не дозволяє елементам стиснутись */
-  flex-grow: 0; /* Елементи не ростуть, щоб займати більше місця */
+  flex-shrink: 0; 
+  flex-grow: 0; 
 }
 
 .icon {
@@ -47,7 +47,7 @@
   line-height: 150%;
   text-align: center;
   color: var(--main);
-  white-space: nowrap; /* Запобігає переносу тексту */
+  white-space: nowrap; 
   overflow: hidden;
-  text-overflow: ellipsis; /* Додає три крапки, якщо текст не вміщується */
+  text-overflow: ellipsis;
 }

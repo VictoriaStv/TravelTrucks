@@ -17,9 +17,7 @@
   object-position: center;
 }
 
-.information {
-}
-
+ 
 .name {
   width: 340px;
 }
@@ -40,7 +38,7 @@
 }
 
 .heartIcon {
-  fill: rgb(60, 255, 0);
+  fill: var(--main);
 
   width: 24px;
   height: 21px;
@@ -70,10 +68,10 @@
 
 .description {
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* Обмежуємо кількість рядків */
+  -webkit-line-clamp: 1; 
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; /* Додаємо багатокрапку в кінці */
+  text-overflow: ellipsis;  
 
   font-weight: 400;
   font-size: 16px;

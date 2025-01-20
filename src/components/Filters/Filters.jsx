@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import EquipmentFilters from "../EquipmentFilters/EquipmentFilters"; // Імпортуємо новий компонент
+import EquipmentFilters from "../EquipmentFilters/EquipmentFilters"; 
 import styles from "./Filters.module.css";
 import sprite from "../../assets/sprite.svg";
 
@@ -12,7 +12,6 @@ const Filters = ({ onFilterChange, campers }) => {
     vehicleType: [],
   });
 
-  // Отримуємо унікальні локації з масиву campers
   const getUniqueLocations = (campers) => {
     const locations = campers.map((camper) => camper.location);
     return [...new Set(locations)];
@@ -24,7 +23,6 @@ const Filters = ({ onFilterChange, campers }) => {
     }
   }, [campers]);
 
-  // Обробка змін локації
   const handleLocationChange = (event) => {
     const location = event.target.value;
     setSelectedLocation(location);
@@ -34,7 +32,7 @@ const Filters = ({ onFilterChange, campers }) => {
     }));
   };
 
-  // Обробка змін у виборі обладнання та типу транспортного засобу
+  
   const handleEquipmentChange = (event) => {
     const { value, checked } = event.target;
     const updatedEquipment = checked
@@ -59,12 +57,12 @@ const Filters = ({ onFilterChange, campers }) => {
     }));
   };
 
-  // Обробка натискання кнопки "Пошук"
+
   const handleSearch = () => {
-    onFilterChange(pendingFilters); // Передаємо фільтри в Catalog
+    onFilterChange(pendingFilters); 
   };
 
-  // Розділення локації на місто та країну
+
   const splitLocation = (location) => {
     const [country, city] = location.split(", ");
     return { city, country };
@@ -72,7 +70,7 @@ const Filters = ({ onFilterChange, campers }) => {
 
   return (
     <div className={styles.filtersContainer}>
-      {/* Фільтр за локацією */}
+   
       <div className={styles.locationLabel}>
         <svg className={styles.icon}>
           <use href={`${sprite}#icon-map`} />
@@ -97,13 +95,12 @@ const Filters = ({ onFilterChange, campers }) => {
         </select>
       </div>
 
-      {/* Фільтри для обладнання та типу транспортного засобу */}
       <EquipmentFilters
         handleEquipmentChange={handleEquipmentChange}
         handleVehicleTypeChange={handleVehicleTypeChange}
       />
 
-      {/* Кнопка Пошук */}
+  
       <button
         className={styles.searchButton}
         onClick={handleSearch}

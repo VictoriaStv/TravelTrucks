@@ -1,35 +1,36 @@
-// CamperList.js
 import { useState } from "react";
 import styles from "./CamperList.module.css";
-import CamperCard from "../CamperCard/CamperCard"; // Імпортуємо CamperCard
-import Loader from "../Loader/Loader"; // Імпортуємо Loader
+import CamperCard from "../CamperCard/CamperCard";
+import Loader from "../Loader/Loader";
 
 const CamperList = ({ campers }) => {
-  const [visibleCount, setVisibleCount] = useState(4); // Початковий стан - 4 картки
-  const [loading, setLoading] = useState(false); // Стан для завантаження
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [loading, setLoading] = useState(false);
 
-  // Функція для завантаження додаткових карток
   const loadMore = () => {
-    setLoading(true); // Показуємо індикатор завантаження
+    setLoading(true);
     setTimeout(() => {
-      setVisibleCount((prevCount) => prevCount + 4); // Збільшуємо кількість видимих карток
-      setLoading(false); // Приховуємо індикатор завантаження
-    }, 1000); // Імітуємо затримку для демонстрації завантаження
+      setVisibleCount((prevCount) => prevCount + 4);
+      setLoading(false);
+    }, 500);
   };
 
   return (
     <div>
       <div className={styles.camperList}>
-        {/* Рендеримо картки кемперів */}
-        {campers.slice(0, visibleCount).map((camper) => (
-          <CamperCard key={camper.name} camper={camper} />
+        {campers.slice(0, visibleCount).map((camper, index) => (
+          <div
+            key={camper.name}
+            className={`${styles.camperCardWrapper} ${styles.fadeIn}`}
+            style={{ animationDelay: `${index * 0.01}s` }}
+          >
+            <CamperCard camper={camper} />
+          </div>
         ))}
       </div>
 
-      {/* Показуємо Loader, якщо завантажуються картки */}
       {loading && <Loader />}
 
-      {/* Кнопка для завантаження додаткових карток */}
       {visibleCount < campers.length && !loading && (
         <button onClick={loadMore} className={styles.loadMoreButton}>
           Load More

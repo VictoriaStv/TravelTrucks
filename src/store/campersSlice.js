@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Створимо асинхронну функцію для отримання списку кемперів
+
 export const fetchCampers = createAsyncThunk(
   "campers/fetchAll",
   async (filters) => {
@@ -10,7 +10,6 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
-// Створимо асинхронну функцію для отримання даних про кемпер
 export const fetchCamperDetails = createAsyncThunk(
   "campers/fetchDetails",
   async (id) => {

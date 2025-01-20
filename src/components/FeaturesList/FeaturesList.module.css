@@ -20,8 +20,16 @@
 }
 .name {
   text-transform: capitalize;
+
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+text-align: center;
+color: var(--main);
 }
 
 .item.update {
   background-color: var(--gray-light);
 }
+
+

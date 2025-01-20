@@ -2,7 +2,7 @@ import sprite from "../../assets/sprite.svg";
 import styles from "./FilterIcons.module.css";
 
 const FilterIcons = ({ filters }) => {
-  // Мапа фільтрів до відповідних іконок
+ 
   const iconMap = {
     AC: "icon-ac",
     bathroom: "icon-bathroom",
@@ -12,10 +12,10 @@ const FilterIcons = ({ filters }) => {
     refrigerator: "icon-refrigerator",
     microwave: "icon-microwave",
     gas: "icon-gas",
-    water: "icon-water", // додано water
+    water: "icon-water", 
   };
 
-  // Мапа для фільтрів по типу трансмісії і пального
+
   const transmissionMap = {
     automatic: "icon-automatic",
     manual: "icon-manual",
@@ -32,21 +32,21 @@ const FilterIcons = ({ filters }) => {
         let icon = iconMap[filter] || "";
         let label = filter;
 
-        // Якщо це трансмісія, то відображаємо відповідну іконку та підпис
+
         if (filter === "transmission") {
-          const transmissionType = filters.transmission; // отримуємо тип трансмісії
+          const transmissionType = filters.transmission; 
           if (transmissionType) {
             icon = transmissionMap[transmissionType] || "";
-            label = `Transmission: ${transmissionType}`; // додаємо підпис
+            label = `Transmission: ${transmissionType}`; 
           }
         }
 
-        // Якщо це двигун, то відображаємо відповідну іконку та підпис
+      
         if (filter === "engine") {
-          const engineType = filters.engine; // отримуємо тип двигуна
+          const engineType = filters.engine; 
           if (engineType) {
             icon = engineMap[engineType] || "";
-            label = `Engine: ${engineType}`; // додаємо підпис
+            label = `Engine: ${engineType}`; 
           }
         }
 

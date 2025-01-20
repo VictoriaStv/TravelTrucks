@@ -26,11 +26,11 @@ const DetailedInfo = () => {
     dispatch(closeModal());
   };
 
-  // Створюємо новий масив з 4 фото, де перше фото повторюється в кінці
+ 
   const galleryImages = trailer?.gallery?.length
     ? [
-        ...trailer.gallery.slice(0, 3), // перші три фото
-        trailer.gallery[0], // повторення першого фото в кінці
+        ...trailer.gallery.slice(0, 3),  
+        trailer.gallery[0],  
       ]
     : [];
 

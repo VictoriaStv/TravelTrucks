@@ -1,4 +1,4 @@
-/* Стиль для лейблу */
+
 .locationLabel {
   display: flex;
   align-items: center;
@@ -6,13 +6,13 @@
   width: 360px;
   height: 56px;
   border-radius: 12px;
-  padding: 18px 18px 18px 46px; /* Відступ для іконки */
+  padding: 18px 18px 18px 46px; 
   background: var(--inputs);
-  font-family: var(--font-family); /* Шрифт для лейблу */
+  font-family: var(--font-family); 
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: var(--main); /* Колір тексту */
+  color: var(--main); 
 }
 
 .icon {
@@ -24,43 +24,43 @@
 }
 
 select {
-  width: 100%; /* Ширина списку */
+  width: 100%;
   height: 100%;
-  font-family: var(--font-family); /* Шрифт */
+  font-family: var(--font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: var(--main); /* Колір тексту */
-  background: var(--inputs); /* Фон списку та опцій */
-  border: none; /* Без рамки */
-  border-radius: 12px; /* Закруглені кути */
-  appearance: none; /* Прибирає стандартну стрілку */
+  color: var(--main); 
+  background: var(--inputs);
+  border: none; 
+  border-radius: 12px; 
+  appearance: none; 
   cursor: pointer;
   position: relative;
-  outline: none; /* Прибирає обводку при фокусі */
+  outline: none; 
 }
 
-/* Стиль при ховері на списку */
+
 select:hover {
-  background-color: var(--highlight-background); /* Підсвічування на ховер */
+  background-color: var(--highlight-background); 
 }
 
-/* Стилі для списку опцій */
+
 select option {
-  background-color: var(--inputs); /* Той самий фон, що й у контейнера */
+  background-color: var(--inputs);
   padding: 12px;
-  font-family: var(--font-family); /* Шрифт для опцій */
+  font-family: var(--font-family); 
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: var(--main); /* Колір тексту */
-  border-radius: 8px; /* Закруглені кути для опцій */
+  color: var(--main); 
+  border-radius: 8px; 
 }
 
-/* Стилі при ховері на опціях */
+
 select option:hover {
   background-color: var(--highlight);
-  color: #fff; /* Колір тексту при ховері */
+  color: #fff; 
 }
 
 .searchButton {

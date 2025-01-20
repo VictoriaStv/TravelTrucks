@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 import styles from "./CamperCard.module.css";
 import FilterIcons from "../FilterIcons/FilterIcons";
 import sprite from "../../assets/sprite.svg";
+import { useState } from "react"; 
 
 const CamperCard = ({ camper }) => {
-  const navigate = useNavigate(); // Ініціалізуємо useNavigate
+  const navigate = useNavigate();
+  const [isFavorite, setIsFavorite] = useState(false);  
 
   const filters = Object.entries(camper)
     .filter(([key, value]) => value === true)
@@ -20,7 +22,11 @@ const CamperCard = ({ camper }) => {
   });
 
   const handleShowMore = () => {
-    navigate(`/catalog/${camper.id}`); // Перехід на сторінку деталей кемпера
+    navigate(`/catalog/${camper.id}`);
+  };
+
+  const toggleFavorite = () => {
+    setIsFavorite((prevState) => !prevState);  
   };
 
   return (
@@ -38,7 +44,13 @@ const CamperCard = ({ camper }) => {
           <h3 className={styles.name}>{camper.name}</h3>
           <p className={styles.price}>€{formattedPrice}</p>
 
-          <svg className={styles.heartIcon}>
+          <svg
+            className={styles.heartIcon}
+            onClick={toggleFavorite}  
+            style={{
+              fill: isFavorite ? "var(--button-hover)" : " fill: var(--main);",  
+            }}
+          >
             <use href={`${sprite}#icon-heart`} />
           </svg>
         </div>

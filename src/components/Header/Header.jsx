@@ -5,14 +5,14 @@ import sprite from "../../assets/sprite.svg";
 const Header = () => {
   return (
     <header className={styles.header}>
-      {/* Логотип */}
+ 
       <NavLink to="/" className={styles.logo}>
         <svg className={styles.logoIcon}>
           <use href={`${sprite}#icon-logo`} />
         </svg>
       </NavLink>
 
-      {/* Навігація */}
+  
       <nav className={styles.nav}>
         <NavLink
           to="/"

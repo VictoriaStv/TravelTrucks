@@ -26,21 +26,21 @@ const favouritesPersistConfig = {
   storage,
 };
 
-// Налаштування Redux store з persisted reducers для фільтрів та улюблених
+
 export const store = configureStore({
   reducer: {
-    trailers: trailerReducer, // редуктор для трейлерів
-    filters: persistReducer(filtersPersistConfig, campersReducer), // редуктор для фільтрів
-    location: campersReducer, // редуктор для місцеположення
-    favourites: persistReducer(favouritesPersistConfig, favouritesReducer), // редуктор для улюблених
-    modal: modalReducer, // редуктор для модалей
+    trailers: trailerReducer,
+    filters: persistReducer(filtersPersistConfig, campersReducer), 
+    location: campersReducer, 
+    favourites: persistReducer(favouritesPersistConfig, favouritesReducer), 
+    modal: modalReducer, 
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER], // ігнорування серіалізації для дії, які обробляє redux-persist
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],  
       },
     }),
 });
 
-export const persistor = persistStore(store); // для збереження та відновлення persisted state
+export const persistor = persistStore(store);  

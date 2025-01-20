@@ -9,7 +9,7 @@ const EquipmentFilters = ({
   const [selectedEquipment, setSelectedEquipment] = useState({});
   const [selectedVehicleType, setSelectedVehicleType] = useState({});
 
-  // Оновлена функція handleCheckboxChange з перевіркою на callback
+ 
   const handleCheckboxChange = (
     event,
     key,
@@ -20,7 +20,7 @@ const EquipmentFilters = ({
     const newState = { ...currentState, [key]: event.target.checked };
     setState(newState);
 
-    // Перевірка, чи callback є функцією перед викликом
+ 
     if (typeof callback === "function") {
       callback(event);
     } else {
@@ -28,7 +28,7 @@ const EquipmentFilters = ({
     }
   };
 
-  // Список обладнання
+ 
   const equipmentList = {
     AC: "AC",
     kitchen: "Kitchen",
@@ -36,9 +36,9 @@ const EquipmentFilters = ({
     bathroom: "Bathroom",
   };
 
-  const additionalClassItems = ["microwave", "gas", "water"]; // Ключі для додаткового класу
+  const additionalClassItems = ["microwave", "gas", "water"];  
 
-  // Список типів транспортних засобів (змінив ключі на ті, що відповідають API)
+  
   const vehicleTypeList = {
     panelTruck: "Van",
     fullyIntegrated: "Fully Integrated",
@@ -48,7 +48,7 @@ const EquipmentFilters = ({
   return (
     <div className={styles.filtersContainer}>
       <div>
-        {/* Фільтри обладнання */}
+     
         <div className={styles.filterTitle}>Filters</div>
         <div className={styles.vehicleTitle}>Vehicle equipment</div>
         <ul className={styles.filterEquipment}>
@@ -89,7 +89,7 @@ const EquipmentFilters = ({
           ))}
         </ul>
 
-        {/* Фільтри типів транспортних засобів */}
+        
         <div className={styles.vehicleTitle}>Vehicle type</div>
         <ul className={styles.filterEquipment}>
           {Object.entries(vehicleTypeList).map(([key, label]) => (

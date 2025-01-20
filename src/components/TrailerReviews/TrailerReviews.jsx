@@ -31,7 +31,7 @@ const TrailerReviews = () => {
                       }
                       key={nanoid()}
                     >
-                      <use href={`${sprite}#icon-raiting`} />
+                      <use href={`${sprite}#icon-star`} />
                     </svg>
                   ))}
                 </div>
