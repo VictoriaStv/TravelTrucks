@@ -1,0 +1,34 @@
+.features {
+  display: flex;
+  margin-top: 50px;
+  gap: 40px;
+}
+
+.featuresSection {
+  max-width: 631px;
+  padding: 44px 80px;
+  background-color: var(--inputs);
+  border-radius: 10px;
+}
+
+.title {
+  margin-top: 100px;
+  margin-bottom: 24px;
+}
+
+.details {
+  margin-top: 24px;
+}
+
+.detailsItem {
+  font-weight: 500;
+  color: var(--cl-primary);
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.type {
+  text-transform: capitalize;
+}

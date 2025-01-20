@@ -1,0 +1,84 @@
+.ratingWrapper {
+  display: flex;
+  gap: 4px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cl-primary);
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reviews {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 2px;
+  margin-right: 16px;
+}
+
+.nameTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--cl-primary);
+  max-width: 360px;
+}
+
+.gallery {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin: 28px 0px;
+}
+
+.photo {
+  border-radius: 10px;
+  width: 292px;
+  height: 312px;
+  object-fit: cover; /* Зображення заповнює контейнер, обрізається по краях */
+  object-position: center; /* Центрує зображення в межах контейнера */
+}
+
+
+.itemDescription {
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--cl-secondary);
+}
+
+.details {
+  display: flex;
+  gap: 40px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 60px;
+  position: relative;
+}
+
+.detailsItem::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -24px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray-light);
+}
+
+.detailsLink {
+  text-decoration: none;
+  color: var(--cl-primary);
+}
+
+.active {
+  text-decoration: underline;
+  text-decoration-color: var(--cl-accent-hover);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 25px;
+}
+
+.iconMap{
+  width: 16px;
+  height: 16px;
+}
+

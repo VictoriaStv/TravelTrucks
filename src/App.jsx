@@ -7,6 +7,8 @@ import TrailerFeatures from "./components/TrailerFeatures/TrailerFeatures";
 import TrailerReviews from "./components/TrailerReviews/TrailerReviews";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
+
+
 import "modern-normalize/modern-normalize.css";
 
 const App = () => {
@@ -16,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/:id/*" element={<CamperDetails />}>
+        <Route path="/catalog/:id" element={<CamperDetails />}>
           <Route path="features" element={<TrailerFeatures />} />
           <Route path="reviews" element={<TrailerReviews />} />
         </Route>

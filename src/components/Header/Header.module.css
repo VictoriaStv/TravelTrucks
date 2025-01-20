@@ -1,14 +1,15 @@
+.logoIcon {
+  width: 136px;
+  height: 16px;
+  
+}
+
 .header {
   display: flex;
   padding-left: 64px;
   padding-top: 28px;
   padding-bottom: 28px;
   background: var(--inputs);
-}
-
-.logoIcon {
-  width: 136px;
-  height: 16px;
 }
 
 .nav {
@@ -21,7 +22,6 @@
   text-align: center;
   color: var(--main);
 }
-
 
 .link:hover,
 .active {

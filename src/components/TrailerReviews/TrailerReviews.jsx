@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import ClientForm from "../ClientForm/ClientForm";
 import css from "./TrailerReviews.module.css";
 import { selectTrailer } from "../../store/selectorsTrailer";
-import icons from "../../assets/sprite.svg";
+import sprite from "../../assets/sprite.svg";
 import { nanoid } from "nanoid";
 
 const TrailerReviews = () => {
@@ -31,7 +31,7 @@ const TrailerReviews = () => {
                       }
                       key={nanoid()}
                     >
-                      <use href={`${icons}#icon-Rating-1`} />
+                      <use href={`${sprite}#icon-raiting`} />
                     </svg>
                   ))}
                 </div>

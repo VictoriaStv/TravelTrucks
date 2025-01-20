@@ -1,4 +1,3 @@
-// Filters.js
 import { useEffect, useState } from "react";
 import EquipmentFilters from "../EquipmentFilters/EquipmentFilters"; // Імпортуємо новий компонент
 import styles from "./Filters.module.css";
@@ -7,10 +6,10 @@ import sprite from "../../assets/sprite.svg";
 const Filters = ({ onFilterChange, campers }) => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [locations, setLocations] = useState([]);
-  const [selectedEquipment, setSelectedEquipment] = useState([]);
   const [pendingFilters, setPendingFilters] = useState({
     location: "",
     equipment: [],
+    vehicleType: [],
   });
 
   // Отримуємо унікальні локації з масиву campers
@@ -35,23 +34,34 @@ const Filters = ({ onFilterChange, campers }) => {
     }));
   };
 
-  // Обробка змін у виборі обладнання
+  // Обробка змін у виборі обладнання та типу транспортного засобу
   const handleEquipmentChange = (event) => {
     const { value, checked } = event.target;
     const updatedEquipment = checked
-      ? [...selectedEquipment, value]
-      : selectedEquipment.filter((item) => item !== value);
+      ? [...pendingFilters.equipment, value]
+      : pendingFilters.equipment.filter((item) => item !== value);
 
-    setSelectedEquipment(updatedEquipment);
     setPendingFilters((prevFilters) => ({
       ...prevFilters,
       equipment: updatedEquipment,
     }));
   };
 
+  const handleVehicleTypeChange = (event) => {
+    const { value, checked } = event.target;
+    const updatedVehicleType = checked
+      ? [...pendingFilters.vehicleType, value]
+      : pendingFilters.vehicleType.filter((item) => item !== value);
+
+    setPendingFilters((prevFilters) => ({
+      ...prevFilters,
+      vehicleType: updatedVehicleType,
+    }));
+  };
+
   // Обробка натискання кнопки "Пошук"
   const handleSearch = () => {
-    onFilterChange(pendingFilters);
+    onFilterChange(pendingFilters); // Передаємо фільтри в Catalog
   };
 
   // Розділення локації на місто та країну
@@ -87,14 +97,21 @@ const Filters = ({ onFilterChange, campers }) => {
         </select>
       </div>
 
-      {/* Фільтри для обладнання */}
-      <EquipmentFilters handleEquipmentChange={handleEquipmentChange} />
+      {/* Фільтри для обладнання та типу транспортного засобу */}
+      <EquipmentFilters
+        handleEquipmentChange={handleEquipmentChange}
+        handleVehicleTypeChange={handleVehicleTypeChange}
+      />
 
       {/* Кнопка Пошук */}
       <button
         className={styles.searchButton}
         onClick={handleSearch}
-        disabled={!locations.length && !selectedEquipment.length}
+        disabled={
+          !locations.length &&
+          !pendingFilters.equipment.length &&
+          !pendingFilters.vehicleType.length
+        }
       >
         Search
       </button>
